@@ -23,5 +23,7 @@ steps:
   inputs:
     command: 'push'
     feedsToUse: 'select'
-    vstsFeed: 'my-packages'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: 'my-packages'
     packagesToPush: '/home/vsts/work/1/Release/**/*.nupkg;!/home/vsts/work/1/Release/**/*.symbols.nupkg'
+    verbosityPush: 'Detailed'
