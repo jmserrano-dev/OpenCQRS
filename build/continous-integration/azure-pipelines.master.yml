@@ -25,5 +25,5 @@ steps:
     feedsToUse: 'select'
     nuGetFeedType: 'internal'
     publishVstsFeed: 'my-packages'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.Source.*.nupkg'  # '/home/vsts/work/1/Release/**/*.nupkg;!/home/vsts/work/1/Release/**/*.symbols.nupkg'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/../**/*.nupkg;!$(Build.ArtifactStagingDirectory)/../**/*.Source.*.nupkg'  # '/home/vsts/work/1/Release/**/*.nupkg;!/home/vsts/work/1/Release/**/*.symbols.nupkg'
     verbosityPush: 'Detailed'
