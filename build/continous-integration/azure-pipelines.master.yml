@@ -26,4 +26,5 @@ steps:
     nuGetFeedType: 'internal'
     publishVstsFeed: 'my-artifacts'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/../**/*.nupkg;!$(Build.ArtifactStagingDirectory)/../**/*.Sources.*.nupkg'  # '/home/vsts/work/1/Release/**/*.nupkg;!/home/vsts/work/1/Release/**/*.symbols.nupkg'
+    allowPackageConflicts: true
     verbosityPush: 'Detailed'
