@@ -24,4 +24,4 @@ steps:
     command: 'push'
     feedsToUse: 'select'
     vstsFeed: 'my-packages'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    packagesToPush: '/home/vsts/work/1/Release/**/*.nupkg;!/home/vsts/work/1/Release/**/*.symbols.nupkg'
