@@ -17,3 +17,11 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+
+- task: NuGetCommand@2
+  displayName: 'publish nuget packages'
+  inputs:
+    command: 'push'
+    feedsToUse: 'select'
+    vstsFeed: 'my-packages'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
