@@ -18,7 +18,7 @@ steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 
-- script: dotnet test /p:CoverletOutputFormat=cobertura /p:CoverletOutput=cover.xml
+- script: dotnet test /p:CoverletOutputFormat=cobertura /p:CoverletOutput="/cover.xml"
   displayName: 'dotnet test'
 
 - task: NuGetCommand@2
