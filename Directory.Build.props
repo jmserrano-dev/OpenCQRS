@@ -2,7 +2,7 @@
 	<Import Project="..\Directory.Build.props" Condition="Exists('..\Directory.Build.props')" />
 
   <PropertyGroup Label="ProjectSettings">
-    <Authors>Luca Briguglia</Authors>
+    <Authors>Luca Briguglia, José Manuel Serrano Mármol</Authors>
     <Company>Luca Briguglia</Company>
     <Copyright>Copyright Luca Briguglia</Copyright>
     <Product>OpenCQRS</Product>
