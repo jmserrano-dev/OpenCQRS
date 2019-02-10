@@ -3,8 +3,8 @@
 # Add steps that run tests, create a NuGet package, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
-trigger:
-- master
+# trigger:
+# - master
 
 pool:
   vmImage: 'Ubuntu-16.04'
@@ -28,6 +28,7 @@ steps:
 
 - task: NuGetCommand@2
   displayName: 'publish nuget packages'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   inputs:
     command: 'push'
     feedsToUse: 'select'
