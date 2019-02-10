@@ -25,7 +25,7 @@ steps:
   displayName: 'publish coverage results'
   inputs:
     codeCoverageTool: 'cobertura'
-    summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage.cobertura.xml
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage.cobertura.xml'
 
 - task: NuGetCommand@2
   displayName: 'publish nuget packages'
