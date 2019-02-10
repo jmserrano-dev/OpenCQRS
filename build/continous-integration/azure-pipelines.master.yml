@@ -21,11 +21,17 @@ steps:
 - script: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput="./coverage.cobertura.xml"
   displayName: 'dotnet test'
 
-- task: PublishCodeCoverageResults@1
-  displayName: 'publish coverage results'
+- task: PublishTestResults@2
   inputs:
-    codeCoverageTool: 'cobertura'
-    summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage.cobertura.xml'
+    testResultsFormat: 'NUnit'
+    testResultsFiles: '**/coverage.cobertura.xml' 
+    searchFolder: '$(System.DefaultWorkingDirectory)'
+
+# - task: PublishCodeCoverageResults@1
+#   displayName: 'publish coverage results'
+#   inputs:
+#     codeCoverageTool: 'cobertura'
+#     summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage.cobertura.xml'
 
 - task: NuGetCommand@2
   displayName: 'publish nuget packages'
