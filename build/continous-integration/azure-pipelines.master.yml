@@ -18,8 +18,14 @@ steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 
-- script: dotnet test /p:CoverletOutputFormat=cobertura /p:CoverletOutput="/cover.xml"
+- script: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput="./coverage.cobertura.xml"
   displayName: 'dotnet test'
+
+- task: PublishCodeCoverageResults@1
+  displayName: 'publish coverage results'
+  inputs:
+    codeCoverageTool: 'cobertura'
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage.cobertura.xml
 
 - task: NuGetCommand@2
   displayName: 'publish nuget packages'
