@@ -2,11 +2,10 @@
 	<Import Project="..\Directory.Build.props" Condition="Exists('..\Directory.Build.props')" />
 
   <PropertyGroup Label="NugetSettings">
-    <Version>6.0.0</Version>
+    <Version>6.0.1</Version>
     <IsPackable>true</IsPackable>
     <GeneratePackageOnBuild Condition="$(Configuration) == 'Release'">true</GeneratePackageOnBuild>
     <PackageTags>opencqrs, .net, core, mediator, ddd, cqrs, event sourcing</PackageTags>
-    <SourcesPackage>true</SourcesPackage> <!-- This should be removed in a future release of the sources lib -->
   </PropertyGroup>
 
   <PropertyGroup Label="ReleaseSettings" Condition="$(Configuration) == 'Release'">
