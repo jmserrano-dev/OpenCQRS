@@ -2,6 +2,8 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/p5p80y0fa6e9wbaa?svg=true)](https://ci.appveyor.com/project/lucabriguglia/opencqrs)
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=jmserrano-dev_OpenCQRS&metric=alert_status)](https://sonarcloud.io/dashboard?id=jmserrano-dev_OpenCQRS) [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=jmserrano-dev_OpenCQRS&metric=code_smells)](https://sonarcloud.io/dashboard?id=jmserrano-dev_OpenCQRS) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=jmserrano-dev_OpenCQRS&metric=bugs)](https://sonarcloud.io/dashboard?id=jmserrano-dev_OpenCQRS) [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=jmserrano-dev_OpenCQRS&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=jmserrano-dev_OpenCQRS) [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=jmserrano-dev_OpenCQRS&metric=security_rating)](https://sonarcloud.io/dashboard?id=jmserrano-dev_OpenCQRS)
+
 OpenCQRS is a .NET Core framework for Domain Driven Design (DDD), Command Query Responsibilty Segragation (CQRS) and Event Sourcing with Azure Service Bus integration.
 
 ## New
