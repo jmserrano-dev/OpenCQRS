@@ -16,12 +16,13 @@ steps:
 - task: SonarSource.sonarqube.15B84CA1-B62F-4A2A-A403-89B77A063157.SonarQubePrepare@4
   displayName: 'Prepare analysis on SonarQube'
   inputs:
-    SonarQube: SonarQube
+    SonarQube: 'SonarCloud'
     projectKey: jmserrano-dev_OpenCQRS
-    projectName: 'OpenCQRS'
+    projectName: OpenCQRS
+    projectVersion: '$(AssemblyVersion)'
     extraProperties: |
-     sonar.cs.vscoveragexml.reportsPaths=$(build.sourcesdirectory)/**/*.coveragexml
-     sonar.exclusions=**/*.js
+     sonar.organization=jmserrano-dev-github
+     sonar.branch.name=$(Build.SourceBranchName)
 
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
