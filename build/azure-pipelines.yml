@@ -7,39 +7,47 @@
 # - master
 
 pool:
-  vmImage: 'Ubuntu-16.04'
+  vmImage: 'vs2017-win2016'
 
 variables:
   buildConfiguration: 'Release'
 
 steps:
+
+- task: DotNetCoreCLI@2
+  displayName: Restore
+  inputs:
+    command: restore
+
 - task: SonarSource.sonarcloud.14d9cde6-c1da-4d55-aa01-2965cd301255.SonarCloudPrepare@1
   displayName: 'Prepare analysis on SonarCloud'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   inputs:
     SonarCloud: SonarCloud
     organization: 'jmserrano-dev-github'
     projectKey: 'jmserrano-dev_OpenCQRS'
     projectName: OpenCQRS
+    extraProperties: |
+     sonar.cs.opencover.reportsPaths=**/coverage.opencover.xml
 
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
-
-- script: dotnet test '$(System.DefaultWorkingDirectory)/test/OpenCqrs.Tests' --configuration $(buildConfiguration) --logger trx --collect "Code coverage"
-  displayName: 'dotnet test'
-
-- task: PublishTestResults@2
-  displayName: 'publish test results'
-  condition: succeededOrFailed()
+- task: DotNetCoreCLI@2
+  displayName: Build
   inputs:
-    testRunner: VSTest
-    testResultsFiles: '**/*.trx'
+    arguments: '--configuration $(BuildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: Test
+  inputs:
+    command: test
+    arguments: '--logger trx --collect "Code coverage"'
 
 - task: SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@1
   displayName: 'Run Code Analysis'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   
 - task: SonarSource.sonarcloud.38b27399-a642-40af-bb7d-9971f69712e8.SonarCloudPublish@1
   displayName: 'Publish Quality Gate Result'
-  enabled: false
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
 
 - task: NuGetCommand@2
   displayName: 'publish nuget packages'
@@ -52,4 +60,3 @@ steps:
     packagesToPush: '$(Build.ArtifactStagingDirectory)/../**/*.nupkg;!$(Build.ArtifactStagingDirectory)/../**/*.Sources.*.nupkg'
     allowPackageConflicts: true
     verbosityPush: 'Detailed'
-
